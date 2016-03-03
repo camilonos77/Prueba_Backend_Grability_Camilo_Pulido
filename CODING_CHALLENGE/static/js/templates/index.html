@@ -5,6 +5,38 @@
 	<h1> Cube Summation </h1>
 	
 	
-	<button type="button" class="btn btn-primary">Iniciar </button>
+	
+	
+	<br>
+	<br>
+	<div id="form" ng-show="mostrarForm" >
+		
+		<form role="form" name="form" id="form">
+			
+			<div class="row">
+			 <div class="col-md-4">	
+				  <div class="form-group">
+				    <label for="email">Ingrese dimensión</label>
+				    <input restrict type="text" class="form-control" id="dimension" name="dimension" ng-model="dimension" required="">
+				  </div>
+			 </div>
+			</div>
+			
+			
+			<div class="row">
+			 <div class="col-md-4">	
+				  <div class="form-group">
+				    <label for="email">Ingrese número de pruebas</label>
+				    <input restrict type="text" class="form-control" id="pruebas" name="pruebas" ng-model="pruebas" required="" >
+				  </div>
+			 </div>
+			</div>
+			  
+			  <button type="submit" ng-click="iniciar()"  ng-disabled="form.$invalid || form.$pending" class="btn btn-success">Iniciar</button>
+	  </form>
+		
+	</div>
+	
+	
 	
 </div>
