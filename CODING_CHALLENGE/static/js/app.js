@@ -1,23 +1,31 @@
-var pruebaApp = angular.module("pruebaApp", [
+var module = angular.module("smartApp", [ 
+                                                'ngRoute',
+                                                
+                                         ]);
 
-											'pruebaApp.controllers'
-											]);
+
+
+module.config(function ($interpolateProvider, 
+        $httpProvider,
+        $locationProvider){
+			$locationProvider.hashPrefix("!")
+});
 
 
 /*
  * Configuracion de las routes internas de angularjs
  * Se recomienda siempre indicar plantilla y controlador
  * */
-pruebaApp.config(['$routeProvider',
+module.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
-            when('/', {
-                templateUrl: './templates/index.html',
+            when('/inicio/', {
+                templateUrl: './static/js/templates/index.html',
                 controller:  'indexController'
             }).
 
         otherwise({
-                redirectTo: '/'
+                redirectTo: '/inicio/'
             });
 }]);
 
@@ -25,8 +33,22 @@ pruebaApp.config(['$routeProvider',
 /*
  * Metodo inicial run
  * */
-pruebaApp.run(function($rootScope) {
+module.run(function($rootScope,$location) {
 
-
+	console.log("dasd");
 	
 });
+
+
+/*
+ * Controlador del App
+ *   
+ */
+module.controller("indexController", function($scope,$filter) {
+	
+	
+	console.log("controlador");
+	
+	
+});	
+
