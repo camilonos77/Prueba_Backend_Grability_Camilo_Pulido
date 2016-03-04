@@ -1,4 +1,99 @@
 
+<!-- Modal resultados -->
+<div id="modal_resultados" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <h4 class="modal-title">Resultados Query</h4>
+      </div>
+      <div class="modal-body">
+        <p>Felicidades la impresión de los query realizados son: </p>
+      </div>
+      
+      
+      <div id="resultados" style="padding-left: 180px;">
+      	
+      		<h3 ng-repeat="value in operaciones track by $index">Query {{ $index + 1}} : {{ value }}</h3>
+      		
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="cerrar()" >Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="modal_seleccion" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+       
+        <h4 class="modal-title">Seleccion de funcionalidad</h4>
+      </div>
+      <div class="modal-body">
+        <p>Seleccione la opción que quiera realizar, ya sea un query o un update </p>
+        
+        <h3>Número de operaciones realizadas {{ validacionNumero }}</h3>
+        <div class="row">
+			 <div class="col-md-4">	
+				  <div class="form-group">
+				    <label for="email">Seleccione función</label>
+				    <select ng-change="limpiar()" class="form-control" id="funcion" name="funcion" ng-model="funcion" required="" >
+				    	<option value="QUERY">QUERY</option>
+				    	<option value="UPDATE">UPDATE</option>
+				    </select>
+				  </div>
+			 </div>
+		</div>
+        
+        <br>
+        
+        
+        <form role="form" name="form_f" id="form_f">
+			
+			<div class="row">
+			 <div class="col-md-4">	
+				  <div class="form-group">
+				    <label ng-show="(funcion === 'QUERY')" for="indiceUno">Ingrese origen QUERY</label> 
+				    <label ng-show="(funcion === 'UPDATE')" for="indiceUno">Ingrese identificador de celdas</label>
+				    <input restrict type="text" class="form-control" restrict id="indiceUno" name="indiceUno" ng-model="indiceUno" required="">
+				  </div>
+			 </div>
+			</div>
+			
+			
+			<div class="row">
+			 <div class="col-md-4">	
+				  <div class="form-group">
+				    <label ng-show="(funcion === 'QUERY')" for="indiceUno">Ingrese fin QUERY</label> 
+				    <label ng-show="(funcion === 'UPDATE')" for="indiceUno">Ingrese valor a actualizar</label>
+				    <input restrict type="text" class="form-control" restrict id="indiceDos" name="indiceDos" ng-model="indiceDos" required="">
+				  </div>
+			 </div>
+			</div>
+		
+		</form>
+        
+        
+        
+        <button type="submit" ng-click="operacion()"  ng-disabled="form_f.$invalid || form_f.$pending" class="btn btn-success">Realizar operación </button>
+        
+      </div>
+      <div class="modal-footer">
+      
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
 
 <div class="container">
@@ -26,13 +121,13 @@
 			<div class="row">
 			 <div class="col-md-4">	
 				  <div class="form-group">
-				    <label for="email">Ingrese número de pruebas</label>
+				    <label for="email">Ingrese número de Operaciones</label>
 				    <input restrict type="text" class="form-control" id="pruebas" name="pruebas" ng-model="pruebas" required="" >
 				  </div>
 			 </div>
 			</div>
 			  
-			  <button type="submit" ng-click="iniciar()"  ng-disabled="form.$invalid || form.$pending" class="btn btn-success">Iniciar</button>
+			<button type="submit" ng-click="iniciar()"  ng-disabled="form.$invalid || form.$pending" class="btn btn-success">Iniciar</button>
 	  </form>
 		
 	</div>
